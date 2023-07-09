@@ -1,0 +1,13 @@
+** notmuch-update
+
+#+begin_src emacs-lisp
+(use-package notmuch-update
+  :straight (:host github :repo "shuxiao9058/notmuch-update")
+  :custom
+  (notmuch-update-command "/opt/local/bin/fdm fetch && notmuch new")
+  (notmuch-update-interval (* 5 60))
+  :config
+  (add-hook 'notmuch-hello-mode-hook  #'notmuch-update-start)
+  :bind
+  (:map notmuch-common-keymap (("u" . notmuch-update))))
+#+end_src
